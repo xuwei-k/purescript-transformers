@@ -62,7 +62,7 @@ instance plusReaderT :: (Plus m) => Plus (ReaderT r m) where
 
 instance alternativeReaderT :: (Alternative m) => Alternative (ReaderT r m)
 
-instance bindReaderT :: (Monad m) => Bind (ReaderT r m) where
+instance bindReaderT :: (Bind m) => Bind (ReaderT r m) where
   bind m k = ReaderT \r -> do
     a <- runReaderT m r
     runReaderT (k a) r
